@@ -50,4 +50,4 @@ ReactDOM.render(
 
 ## License
 
-[ISC © Ryan Festag](LICENSE.md)
+[ISC © Ryan Festag](LICENSE)
