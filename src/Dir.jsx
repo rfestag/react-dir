@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { DirContext as dirContext } from "./DirCommon";
+import {
+  DirContext as dirContext,
+  DirDefaultStyle as defaultStyle
+} from "./DirCommon";
 import { DirObject, CollapsedObject } from "./DirObject";
 import { DirArray, CollapsedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
@@ -93,5 +96,6 @@ DirRoot.propTypes = {
 };
 
 export const DirContext = dirContext;
+export const DirDefaultStyle = defaultStyle;
 
 export default DirRoot;
