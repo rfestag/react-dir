@@ -1,0 +1,79 @@
+{
+  "name": "react-dir",
+  "version": "0.0.1",
+  "description": "A react component that can do a console.dir()-like listing of any object passed to it.",
+  "main": "dist/index.js",
+  "author": "Ryan Festag (rfestag@gmail.com)",
+  "license": "ISC",
+  "scripts": {
+    "build": "parcel build src/Dist.jsx --out-dir dist",
+    "start": "parcel src/index.html",
+    "doc": "jsdoc -c jsdoc.json",
+    "precommit": "lint-staged",
+    "release": "standard-version",
+    "test": "jest --coverage"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "npm run build",
+      "jest --bail --coverage --findRelatedTests",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "src/**/*.jsx"
+    ],
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
+  },
+  "keywords": [
+    "react"
+  ],
+  "dependencies": {
+    "buble": "^0.19.7",
+    "codemirror": "^5.48.0",
+    "react-codemirror2": "^6.0.0",
+    "serialize-javascript": "^1.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-rewire": "^1.2.0",
+    "cross-env": "^5.2.0",
+    "docdash": "^1.1.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-jest": "^22.7.1",
+    "eslint-plugin-jsdoc": "^8.4.5",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "husky": "^2.7.0",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
+    "jsdoc": "^3.6.2",
+    "jsdoc-mermaid": "^1.0.0",
+    "lint-staged": "^8.2.1",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-live": "2.1.2",
+    "react-test-renderer": "^16.8.6",
+    "standard-version": "^6.0.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
