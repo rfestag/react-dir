@@ -1,18 +1,15 @@
 import React from "react";
 import { mount } from "../enzyme";
-
+import { DirAtomic } from "./DirAtomic";
+import { DirArray, OpenArray, ClosedArray, CollapsedArray } from "./DirArray";
+import {
+  DirObject,
+  OpenObject,
+  ClosedObject,
+  CollapsedObject
+} from "./DirObject";
+import { More } from "./DirCommon";
 import Dir from "./Dir";
-
-const DirAtomic = Dir.__get__("DirAtomic");
-const DirArray = Dir.__get__("DirArray");
-const DirObject = Dir.__get__("DirObject");
-const CollapsedArray = Dir.__get__("CollapsedArray");
-const ClosedArray = Dir.__get__("ClosedArray");
-const OpenArray = Dir.__get__("OpenArray");
-const CollapsedObject = Dir.__get__("CollapsedObject");
-const ClosedObject = Dir.__get__("ClosedObject");
-const OpenObject = Dir.__get__("OpenObject");
-const More = Dir.__get__("More");
 
 describe("Dir tests", () => {
   describe("Atomic values", () => {
@@ -154,7 +151,7 @@ describe("Dir tests", () => {
       closed.simulate("click");
       let open = wrapper.find(OpenObject);
       closed = open.find(ClosedObject);
-      closed.simulate("click");
+      closed.first().simulate("click");
       open = open.find(OpenObject);
       expect(open.length).toEqual(1);
       const atomic = open.find(DirAtomic);

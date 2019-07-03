@@ -10,13 +10,14 @@ import {
 } from "react-live";
 import { transform } from "buble";
 import { UnControlled as CodeMirror } from "react-codemirror2";
-import Dir, { DirContext, DirDefaultStyle } from "./Dir";
+import Dir, { DirContext } from "./Dir";
+import { DirDefaultStyle } from "./DirCommon";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/javascript/javascript";
 
-const style = { ...DirDefaultStyle, color: "blue", stringColor: "purple" };
+const style = { ...DirDefaultStyle };
 
 const test = `return {
   str: "String",
