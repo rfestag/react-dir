@@ -24,7 +24,9 @@
   },
   "jest": {
     "collectCoverage": true,
-    "testPathIgnorePatterns": ["/dist"],
+    "testPathIgnorePatterns": [
+      "/dist"
+    ],
     "coveragePathIgnorePatterns": [
       "/src/index.js",
       "/src/enzyme.js"
