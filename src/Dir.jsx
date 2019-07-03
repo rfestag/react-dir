@@ -76,10 +76,9 @@ DirObject.propTypes = {
   name: PropTypes.string
 };
 const ClosedObject = ({ name, value, onClick }) => {
-  const [count, setCount] = useState(10);
   const keys = Object.keys(value);
-  const first = keys.slice(0, count);
-  const last = keys.slice(count);
+  const first = keys.slice(0, 10);
+  const last = keys.slice(10);
 
   return (
     <span onClick={onClick}>
@@ -99,7 +98,7 @@ const ClosedObject = ({ name, value, onClick }) => {
             </li>
           );
         })}
-        {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
+        {last.length ? <More /> : null}
       </ul>
       <span>{"}"}</span>
     </span>
@@ -152,10 +151,9 @@ DirArray.propTypes = {
   name: PropTypes.string
 };
 const ClosedArray = ({ name, value, onClick }) => {
-  const [count, setCount] = useState(10);
   const keys = Object.keys(value);
-  const first = keys.slice(0, count);
-  const last = keys.slice(count);
+  const first = keys.slice(0, 10);
+  const last = keys.slice(10);
 
   return (
     <span onClick={onClick}>
@@ -175,7 +173,7 @@ const ClosedArray = ({ name, value, onClick }) => {
             </li>
           );
         })}
-        {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
+        {last.length ? <More /> : null}
       </ul>
       <span>{"]"}</span>
     </span>
