@@ -28,8 +28,7 @@
       "/dist"
     ],
     "coveragePathIgnorePatterns": [
-      "/src/index.js",
-      "/src/enzyme.js"
+      "/src/index.js"
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
