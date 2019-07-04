@@ -7,9 +7,6 @@
 # testing
 /coverage
 
-# production
-/dist
-
 # misc
 /docs
 .DS_Store
