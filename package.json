@@ -18,7 +18,7 @@
       "eslint --fix",
       "prettier --write",
       "npm run build",
-      "jest --bail --coverage --findRelatedTests",
+      "jest --bail --coverage --findRelatedTests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
       "git add"
     ]
   },
@@ -35,6 +35,7 @@
       "src/**/*.jsx"
     ],
     "coverageReporters": [
+      "lcov",
       "json",
       "html"
     ]
@@ -50,6 +51,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-plugin-rewire": "^1.2.0",
+    "coveralls": "^3.0.4",
     "cross-env": "^5.2.0",
     "docdash": "^1.1.1",
     "enzyme": "^3.10.0",
@@ -70,8 +72,6 @@
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-live": "2.1.2",
-    "react-test-renderer": "^16.8.6",
     "standard-version": "^6.0.1"
   },
   "peerDependencies": {
