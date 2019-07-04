@@ -2,15 +2,8 @@
 
 [![license](https://img.shields.io/github/license/rfestag/react-dir.svg)](LICENSE)
 [![Build Status](https://travis-ci.com/rfestag/react-dir.svg?branch=master)](https://travis-ci.com/rfestag/react-dir)
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 react-dir is a react component for rendering arbitrary JS data (strings, numbers, objects, etc), similar to `console.dir()` or `console.log()` in a browser.
-
-## Table of Contents
-
-- [Install](#install)
-- [Usage](#usage)
-- [License](#license)
 
 ## Install
 
@@ -51,4 +44,4 @@ ReactDOM.render(
 
 ## License
 
-[ISC © Ryan Festag](LICENSE)
+react-dir is [ISC](LICENSE) licensed
