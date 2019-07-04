@@ -6,7 +6,7 @@
   "author": "Ryan Festag (rfestag@gmail.com)",
   "license": "ISC",
   "scripts": {
-    "build": "parcel build src/Dir.jsx --out-dir dist --out-file index.js",
+    "build": "parcel build src/Dir.jsx --out-file index.js",
     "start": "parcel src/index.html",
     "doc": "jsdoc -c jsdoc.json",
     "precommit": "lint-staged",
