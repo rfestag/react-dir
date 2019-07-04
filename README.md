@@ -3,6 +3,7 @@
 [![license](https://img.shields.io/github/license/rfestag/react-dir.svg)](LICENSE)
 [![Build Status](https://travis-ci.com/rfestag/react-dir.svg?branch=master)](https://travis-ci.com/rfestag/react-dir)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e6f97ddf416aa738938b/maintainability)](https://codeclimate.com/github/rfestag/react-dir/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e6f97ddf416aa738938b/test_coverage)](https://codeclimate.com/github/rfestag/react-dir/test_coverage)
 
 react-dir is a react component for rendering arbitrary JS data (strings, numbers, objects, etc), similar to `console.dir()` or `console.log()` in a browser.
 
