@@ -1,9 +1,14 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { DirContext, DirDefaultStyle, Collapsed } from "./DirCommon";
-import { DirObject } from "./DirObject";
-import { DirRegex } from "./DirRegex";
-import { DirArray } from "./DirArray";
+import {
+  DirContext,
+  DirDefaultStyle,
+  Collapsible,
+  Collapsed
+} from "./DirCommon";
+import { OpenObject, ClosedObject } from "./DirObject";
+import { OpenRegex, ClosedRegex } from "./DirRegex";
+import { OpenArray, ClosedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
 
 export const Dir = ({ name, value, withCaret, closed }) => {
@@ -65,15 +70,32 @@ export const Dir = ({ name, value, withCaret, closed }) => {
     component = closed ? (
       <Collapsed name={name} value={value} />
     ) : (
-      <DirArray name={name} value={value} />
+      <Collapsible
+        Open={OpenArray}
+        Closed={ClosedArray}
+        name={name}
+        value={value}
+      />
     );
   } else if (value instanceof RegExp) {
-    component = <DirRegex name={name} value={value} />;
+    component = (
+      <Collapsible
+        Open={OpenRegex}
+        Closed={ClosedRegex}
+        name={name}
+        value={value}
+      />
+    );
   } else {
     component = closed ? (
       <Collapsed name={name} value={value} />
     ) : (
-      <DirObject name={name} value={value} />
+      <Collapsible
+        Open={OpenObject}
+        Closed={ClosedObject}
+        name={name}
+        value={value}
+      />
     );
   }
   return component;

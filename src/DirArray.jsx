@@ -1,14 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
-import {
-  More,
-  ListProps,
-  Collapsed,
-  Collapsible,
-  CaretLeft,
-  CaretDown
-} from "./DirCommon";
+import { More, ListProps, Collapsed, CaretLeft, CaretDown } from "./DirCommon";
 
 export const ClosedArray = ({ name, value, onClick }) => {
   const keys = Object.keys(value);
@@ -59,18 +52,5 @@ export const OpenArray = ({ name, value, onClick }) => {
 OpenArray.propTypes = {
   value: PropTypes.array,
   onClick: PropTypes.func,
-  name: PropTypes.string
-};
-
-export const DirArray = ({ name, value }) => (
-  <Collapsible
-    Open={OpenArray}
-    Closed={ClosedArray}
-    name={name}
-    value={value}
-  />
-);
-DirArray.propTypes = {
-  value: PropTypes.array,
   name: PropTypes.string
 };

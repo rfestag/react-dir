@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "../enzyme";
 import { DirAtomic } from "./DirAtomic";
-import { DirRegex, ClosedRegex } from "./DirRegex";
-import { DirArray, OpenArray, ClosedArray } from "./DirArray";
-import { DirObject, OpenObject, ClosedObject } from "./DirObject";
+import { ClosedRegex } from "./DirRegex";
+import { OpenArray, ClosedArray } from "./DirArray";
+import { OpenObject, ClosedObject } from "./DirObject";
 import { Collapsed, More } from "./DirCommon";
 import Dir from "./Dir";
 
@@ -36,19 +36,19 @@ describe("Dir tests", () => {
   });
   describe("Regex values", () => {
     it("renders regex values", () => {
-      const wrapper = mount(<DirRegex value={/[a-zA-Z]{3}/} />);
+      const wrapper = mount(<Dir value={/[a-zA-Z]{3}/} />);
       const closed = wrapper.find(ClosedRegex);
       expect(closed.length).toEqual(1);
     });
   });
   describe("Array values", () => {
     it("renders closed by default", () => {
-      const wrapper = mount(<DirArray value={[1, 2, 3]} />);
+      const wrapper = mount(<Dir value={[1, 2, 3]} />);
       const closed = wrapper.find(ClosedArray);
       expect(closed.length).toEqual(1);
     });
     it("opens/closes after click", () => {
-      const wrapper = mount(<DirArray value={[1, 2, 3]} />);
+      const wrapper = mount(<Dir value={[1, 2, 3]} />);
       let closed = wrapper.find(ClosedArray);
       closed.simulate("click");
       const open = wrapper.find(OpenArray);
@@ -61,7 +61,7 @@ describe("Dir tests", () => {
     });
     it("expands after 'more' click", () => {
       const wrapper = mount(
-        <DirArray value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]} />
+        <Dir value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]} />
       );
       const closed = wrapper.find(ClosedArray);
       closed.simulate("click");
@@ -76,7 +76,7 @@ describe("Dir tests", () => {
       expect(atomic.length).toEqual(12);
     });
     it("handles nested arrays", () => {
-      const wrapper = mount(<DirArray value={[[1, 2]]} />);
+      const wrapper = mount(<Dir value={[[1, 2]]} />);
       let closed = wrapper.find(ClosedArray);
       closed.simulate("click");
       let open = wrapper.find(OpenArray);
@@ -90,12 +90,12 @@ describe("Dir tests", () => {
   });
   describe("Object values", () => {
     it("renders closed by default", () => {
-      const wrapper = mount(<DirObject value={{ a: 1, b: 2 }} />);
+      const wrapper = mount(<Dir value={{ a: 1, b: 2 }} />);
       const closed = wrapper.find(ClosedObject);
       expect(closed.length).toEqual(1);
     });
     it("opens/closes after click", () => {
-      const wrapper = mount(<DirObject value={{ a: 1, b: 2 }} />);
+      const wrapper = mount(<Dir value={{ a: 1, b: 2 }} />);
       let closed = wrapper.find(ClosedObject);
       closed.simulate("click");
       const open = wrapper.find(OpenObject);
@@ -108,7 +108,7 @@ describe("Dir tests", () => {
     });
     it("expands after 'more' click", () => {
       const wrapper = mount(
-        <DirObject
+        <Dir
           value={{
             a: 1,
             b: 2,
@@ -137,7 +137,7 @@ describe("Dir tests", () => {
       expect(atomic.length).toEqual(11);
     });
     it("handles nested objects", () => {
-      const wrapper = mount(<DirObject value={{ a: { b: 1, c: 2 } }} />);
+      const wrapper = mount(<Dir value={{ a: { b: 1, c: 2 } }} />);
       let closed = wrapper.find(ClosedObject);
       closed.simulate("click");
       let open = wrapper.find(OpenObject);
@@ -149,7 +149,7 @@ describe("Dir tests", () => {
       expect(atomic.length).toEqual(2);
     });
     it("handles nested arrays", () => {
-      const wrapper = mount(<DirObject value={{ a: [1, 2] }} />);
+      const wrapper = mount(<Dir value={{ a: [1, 2] }} />);
       let closed = wrapper.find(ClosedObject);
       closed.simulate("click");
       let open = wrapper.find(OpenObject);
