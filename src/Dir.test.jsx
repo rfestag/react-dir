@@ -59,7 +59,7 @@ describe("Dir tests", () => {
       const open = wrapper.find(OpenArray);
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
-      expect(atomic.length).toEqual(3);
+      expect(atomic.length).toEqual(4);
       open.find(CollapsedArray).simulate("click");
       closed = wrapper.find(ClosedArray);
       expect(closed.length).toEqual(1);
@@ -78,7 +78,7 @@ describe("Dir tests", () => {
       more.simulate("click");
       open = wrapper.find(OpenArray);
       atomic = open.find(DirAtomic);
-      expect(atomic.length).toEqual(11);
+      expect(atomic.length).toEqual(12);
     });
     it("handles nested arrays", () => {
       const wrapper = mount(<DirArray value={[[1, 2]]} />);
@@ -90,7 +90,7 @@ describe("Dir tests", () => {
       open = open.find(OpenArray);
       expect(open.length).toEqual(1);
       const atomic = open.find(DirAtomic);
-      expect(atomic.length).toEqual(2);
+      expect(atomic.length).toEqual(3);
     });
   });
   describe("Object values", () => {
@@ -163,7 +163,7 @@ describe("Dir tests", () => {
       open = wrapper.find(OpenArray);
       expect(open.length).toEqual(1);
       const atomic = open.find(DirAtomic);
-      expect(atomic.length).toEqual(2);
+      expect(atomic.length).toEqual(3);
     });
   });
 });

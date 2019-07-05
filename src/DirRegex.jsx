@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Collapsible, CaretLeft, CaretDown } from "./DirCommon";
-import { ListProps } from "./DirObject";
+import { ListProps, Collapsible, CaretLeft, CaretDown } from "./DirCommon";
 
 export const ClosedRegex = ({ name, value, onClick }) => {
   return (

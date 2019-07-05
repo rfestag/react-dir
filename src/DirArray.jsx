@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
 import {
   DirContext,
   More,
+  ListProps,
   Collapsed,
   Collapsible,
   CaretLeft,
@@ -58,11 +59,6 @@ ClosedArray.propTypes = {
   name: PropTypes.string
 };
 export const OpenArray = ({ name, value, onClick }) => {
-  const [count, setCount] = useState(10);
-  const keys = Object.keys(value).sort();
-  const first = keys.slice(0, count);
-  const last = keys.slice(count);
-
   return (
     <span>
       <span onClick={onClick}>
@@ -70,14 +66,7 @@ export const OpenArray = ({ name, value, onClick }) => {
         {name && <span>{name}: </span>}
         <CollapsedArray />
       </span>
-      <ul style={{ listStyleType: "none", margin: 0, paddingLeft: 16 }}>
-        {first.map(k => (
-          <li key={k}>
-            <Dir value={value[k]} withCaret={true} name={k} />
-          </li>
-        ))}
-        {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
-      </ul>
+      <ListProps value={value} />
     </span>
   );
 };

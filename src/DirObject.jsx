@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
 import {
@@ -6,6 +6,7 @@ import {
   Collapsed,
   Collapsible,
   More,
+  ListProps,
   CaretLeft,
   CaretDown
 } from "./DirCommon";
@@ -22,35 +23,6 @@ export const CollapsedObject = ({ name }) => {
 };
 CollapsedObject.propTypes = {
   name: PropTypes.string
-};
-export const ListProps = ({ value }) => {
-  const [count, setCount] = useState(10);
-  const keys = Object.getOwnPropertyNames(value);
-  const first = keys.slice(0, count);
-  const last = keys.slice(count);
-
-  return (
-    <ul style={{ listStyleType: "none", margin: 0, paddingLeft: 16 }}>
-      {first.map(k => {
-        try {
-          return (
-            <li key={k}>
-              <Dir value={value[k]} withCaret={true} name={k} />
-            </li>
-          );
-        } catch (e) {
-          return null;
-        }
-      })}
-      <li>
-        <Dir name="prototype" value={Object.getPrototypeOf(value)} />
-      </li>
-      {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
-    </ul>
-  );
-};
-ListProps.propTypes = {
-  value: PropTypes.any
 };
 export const ClosedObject = ({ name, value, onClick }) => {
   const keys = Object.keys(value);
@@ -94,7 +66,7 @@ export const ClosedObject = ({ name, value, onClick }) => {
   );
 };
 ClosedObject.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.any,
   onClick: PropTypes.func,
   name: PropTypes.string
 };
@@ -113,7 +85,7 @@ export const OpenObject = ({ name, value, onClick }) => {
   );
 };
 OpenObject.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.any,
   onClick: PropTypes.func,
   name: PropTypes.string
 };
@@ -127,6 +99,6 @@ export const DirObject = ({ name, value }) => (
   />
 );
 DirObject.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.any,
   name: PropTypes.string
 };
