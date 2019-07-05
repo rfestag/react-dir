@@ -5,6 +5,7 @@ import {
   DirDefaultStyle as defaultStyle
 } from "./DirCommon";
 import { DirObject, CollapsedObject } from "./DirObject";
+import { DirRegex } from "./DirRegex";
 import { DirArray, CollapsedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
 
@@ -17,8 +18,9 @@ export const Dir = ({ name, value, withCaret, closed }) => {
     numericColor,
     stringColor
   } = useContext(dirContext);
+  let component;
   if (value === undefined) {
-    return (
+    component = (
       <DirAtomic
         name={name}
         withCaret={withCaret}
@@ -27,7 +29,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
       />
     );
   } else if (value === null) {
-    return (
+    component = (
       <DirAtomic
         name={name}
         withCaret={withCaret}
@@ -36,7 +38,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
       />
     );
   } else if (typeof value === "boolean") {
-    return (
+    component = (
       <DirAtomic
         name={name}
         withCaret={withCaret}
@@ -45,7 +47,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
       />
     );
   } else if (typeof value === "number") {
-    return (
+    component = (
       <DirAtomic
         name={name}
         withCaret={withCaret}
@@ -54,7 +56,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
       />
     );
   } else if (typeof value === "string") {
-    return (
+    component = (
       <DirAtomic
         name={name}
         withCaret={withCaret}
@@ -63,18 +65,21 @@ export const Dir = ({ name, value, withCaret, closed }) => {
       />
     );
   } else if (value instanceof Array) {
-    return closed ? (
+    component = closed ? (
       <CollapsedArray name={name} />
     ) : (
       <DirArray name={name} value={value} />
     );
+  } else if (value instanceof RegExp) {
+    component = <DirRegex name={name} value={value} />;
   } else {
-    return closed ? (
+    component = closed ? (
       <CollapsedObject name={name} />
     ) : (
       <DirObject name={name} value={value} />
     );
   }
+  return component;
 };
 Dir.propTypes = {
   value: PropTypes.any,

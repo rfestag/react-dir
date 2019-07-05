@@ -19,65 +19,73 @@ export const CollapsedObject = ({ name }) => {
 CollapsedObject.propTypes = {
   name: PropTypes.string
 };
-const objectTitle = (name, value, open) => {
-  if (value instanceof RegExp) {
-    return name ? `${name}: ${value}` : value.toString();
-  } else if (value instanceof Date) {
-    //TODO: Something better for value
-    return name ? `${name}: ${value}` : value.toString();
-  } else if (open) {
-    return (
-      <span>
-        {name && <span>{name}: </span>}
-        <CollapsedObject />
-      </span>
-    );
-  } else {
-    return name
-      ? `${name}: ${value.constructor.name} {`
-      : `${value.constructor.name} {`;
-  }
+export const ListProps = ({ value }) => {
+  const [count, setCount] = useState(10);
+  const keys = Object.getOwnPropertyNames(value);
+  const first = keys.slice(0, count);
+  const last = keys.slice(count);
+
+  return (
+    <ul style={{ listStyleType: "none", margin: 0, paddingLeft: 16 }}>
+      {first.map(k => {
+        try {
+          return (
+            <li key={k}>
+              <Dir value={value[k]} withCaret={true} name={k} />
+            </li>
+          );
+        } catch (e) {
+          return null;
+        }
+      })}
+      <li>
+        <Dir name="prototype" value={Object.getPrototypeOf(value)} />
+      </li>
+      {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
+    </ul>
+  );
+};
+ListProps.propTypes = {
+  value: PropTypes.any
 };
 export const ClosedObject = ({ name, value, onClick }) => {
   const keys = Object.keys(value);
   const first = keys.slice(0, 10);
   const last = keys.slice(10);
-  const showProperties = !(value instanceof RegExp || value instanceof Date);
 
   return (
     <span onClick={onClick}>
       <span>
         <CaretLeft />
-        {objectTitle(name, value, false)}
+        {name
+          ? `${name}: ${value.constructor.name} {`
+          : `${value.constructor.name} {`}
       </span>
-      {showProperties && (
-        <span>
-          <ul
-            style={{ listStyleType: "none", paddingLeft: 8, display: "inline" }}
-          >
-            {first.map((k, i) => {
-              return (
-                <li
-                  key={k}
-                  style={{ paddingLeft: 0, paddingRight: 8, display: "inline" }}
-                >
-                  <Dir
-                    value={value[k]}
-                    name={k}
-                    withCaret={false}
-                    closed={true}
-                  />
-                  {i !== first.length - 1 || last.length ? "," : null}
-                </li>
-              );
-            })}
-            {last.length ? <More /> : null}
-          </ul>
-          {!(value instanceof RegExp || value instanceof Date) && (
-            <span>{"}"}</span>
-          )}
-        </span>
-      )}
+      <span>
+        <ul
+          style={{ listStyleType: "none", paddingLeft: 8, display: "inline" }}
+        >
+          {first.map((k, i) => {
+            return (
+              <li
+                key={k}
+                style={{ paddingLeft: 0, paddingRight: 8, display: "inline" }}
+              >
+                <Dir
+                  value={value[k]}
+                  name={k}
+                  withCaret={false}
+                  closed={true}
+                />
+                {i !== first.length - 1 || last.length ? "," : null}
+              </li>
+            );
+          })}
+          {last.length ? <More /> : null}
+        </ul>
+
+        <span>{"}"}</span>
+      </span>
     </span>
   );
 };
@@ -87,32 +95,16 @@ ClosedObject.propTypes = {
   name: PropTypes.string
 };
 export const OpenObject = ({ name, value, onClick }) => {
-  const [count, setCount] = useState(10);
-  const keys = Object.getOwnPropertyNames(value).sort();
-  const first = keys.slice(0, count);
-  const last = keys.slice(count);
-
   return (
     <span>
       <span onClick={onClick}>
         <CaretDown />
-        {objectTitle(name, value, true)}
+        <span>
+          {name && <span>{name}: </span>}
+          <CollapsedObject />
+        </span>
       </span>
-      <ul style={{ listStyleType: "none", margin: 0, paddingLeft: 16 }}>
-        {first.map(k => {
-          try {
-            return (
-              <li key={k}>
-                <Dir value={value[k]} withCaret={true} name={k} />
-              </li>
-            );
-          } catch (e) {
-            return null;
-          }
-        })}
-        <Dir name="prototype" value={Object.getPrototypeOf(value)} />
-        {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
-      </ul>
+      <ListProps value={value} />
     </span>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "../enzyme";
 import { DirAtomic } from "./DirAtomic";
+import { DirRegex, ClosedRegex } from "./DirRegex";
 import { DirArray, OpenArray, ClosedArray, CollapsedArray } from "./DirArray";
 import {
   DirObject,
@@ -48,6 +49,13 @@ describe("Dir tests", () => {
       const atomic = wrapper.find(DirAtomic);
       expect(atomic.length).toEqual(1);
       expect(atomic.text()).toEqual('"String"');
+    });
+  });
+  describe("Regex values", () => {
+    it("renders regex values", () => {
+      const wrapper = mount(<DirRegex value={/[a-zA-Z]{3}/} />);
+      const closed = wrapper.find(ClosedRegex);
+      expect(closed.length).toEqual(1);
     });
   });
   describe("Array values", () => {
