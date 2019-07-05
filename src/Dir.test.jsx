@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "../enzyme";
 import { DirAtomic } from "./DirAtomic";
 import { ClosedRegex } from "./DirRegex";
-import { OpenArray, ClosedArray } from "./DirArray";
+import { ClosedArray } from "./DirArray";
 import { OpenObject, ClosedObject } from "./DirObject";
 import { Collapsed, More } from "./DirCommon";
 import Dir from "./Dir";
@@ -51,7 +51,7 @@ describe("Dir tests", () => {
       const wrapper = mount(<Dir value={[1, 2, 3]} />);
       let closed = wrapper.find(ClosedArray);
       closed.simulate("click");
-      const open = wrapper.find(OpenArray);
+      const open = wrapper.find(OpenObject);
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(4);
@@ -65,13 +65,13 @@ describe("Dir tests", () => {
       );
       const closed = wrapper.find(ClosedArray);
       closed.simulate("click");
-      let open = wrapper.find(OpenArray);
+      let open = wrapper.find(OpenObject);
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(10);
       const more = wrapper.find(More).last();
       more.simulate("click");
-      open = wrapper.find(OpenArray);
+      open = wrapper.find(OpenObject);
       atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(12);
     });
@@ -79,10 +79,10 @@ describe("Dir tests", () => {
       const wrapper = mount(<Dir value={[[1, 2]]} />);
       let closed = wrapper.find(ClosedArray);
       closed.simulate("click");
-      let open = wrapper.find(OpenArray);
+      let open = wrapper.find(OpenObject);
       closed = open.find(ClosedArray);
       closed.simulate("click");
-      open = open.find(OpenArray);
+      open = open.find(OpenObject);
       expect(open.length).toEqual(1);
       const atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(3);
@@ -155,8 +155,11 @@ describe("Dir tests", () => {
       let open = wrapper.find(OpenObject);
       closed = open.find(ClosedArray);
       closed.simulate("click");
-      open = wrapper.find(OpenArray);
-      expect(open.length).toEqual(1);
+      open = wrapper.find(OpenObject);
+      //There are two open objects here because the inner array
+      //and outer object are both expanded, and both are represented
+      //as an OpenObject
+      expect(open.length).toEqual(2);
       const atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(3);
     });

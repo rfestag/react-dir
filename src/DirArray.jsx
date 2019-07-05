@@ -1,12 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  ListProps,
-  InlineListProps,
-  Collapsed,
-  CaretLeft,
-  CaretDown
-} from "./DirCommon";
+import { InlineListProps, CaretLeft } from "./DirCommon";
 
 export const ClosedArray = ({ name, value, onClick }) => {
   return (
@@ -21,23 +15,6 @@ export const ClosedArray = ({ name, value, onClick }) => {
   );
 };
 ClosedArray.propTypes = {
-  value: PropTypes.array,
-  onClick: PropTypes.func,
-  name: PropTypes.string
-};
-export const OpenArray = ({ name, value, onClick }) => {
-  return (
-    <span>
-      <span onClick={onClick}>
-        <CaretDown />
-        {name && <span>{name}: </span>}
-        <Collapsed value={value} />
-      </span>
-      <ListProps value={value} />
-    </span>
-  );
-};
-OpenArray.propTypes = {
   value: PropTypes.array,
   onClick: PropTypes.func,
   name: PropTypes.string

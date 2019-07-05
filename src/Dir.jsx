@@ -7,8 +7,8 @@ import {
   Collapsed
 } from "./DirCommon";
 import { OpenObject, ClosedObject } from "./DirObject";
-import { OpenRegex, ClosedRegex } from "./DirRegex";
-import { OpenArray, ClosedArray } from "./DirArray";
+import { ClosedRegex } from "./DirRegex";
+import { ClosedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
 
 export const Dir = ({ name, value, withCaret, closed }) => {
@@ -69,10 +69,10 @@ export const Dir = ({ name, value, withCaret, closed }) => {
   } else {
     let Open, Closed;
     if (value instanceof Array) {
-      Open = OpenArray;
+      Open = OpenObject;
       Closed = ClosedArray;
     } else if (value instanceof RegExp) {
-      Open = OpenRegex;
+      Open = OpenObject;
       Closed = ClosedRegex;
     } else {
       Open = OpenObject;
