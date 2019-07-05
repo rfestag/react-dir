@@ -1,7 +1,6 @@
 import React from "react";
 import { mount } from "../enzyme";
 import { DirAtomic } from "./DirAtomic";
-import { ClosedRegex } from "./DirRegex";
 import { ClosedArray } from "./DirArray";
 import { OpenObject, ClosedObject } from "./DirObject";
 import { Collapsed, More } from "./DirCommon";
@@ -37,7 +36,7 @@ describe("Dir tests", () => {
   describe("Regex values", () => {
     it("renders regex values", () => {
       const wrapper = mount(<Dir value={/[a-zA-Z]{3}/} />);
-      const closed = wrapper.find(ClosedRegex);
+      const closed = wrapper.find(ClosedObject);
       expect(closed.length).toEqual(1);
     });
   });
@@ -90,7 +89,7 @@ describe("Dir tests", () => {
   });
   describe("Object values", () => {
     it("renders closed by default", () => {
-      const wrapper = mount(<Dir value={{ a: 1, b: 2 }} />);
+      const wrapper = mount(<Dir value={{ a: 1, b: 2, c: /A/ }} />);
       const closed = wrapper.find(ClosedObject);
       expect(closed.length).toEqual(1);
     });

@@ -15,7 +15,7 @@ ReactDOM.render(
     <Dir value={/[A-Z]{3}/} />
     <Dir value={new Date()} />
     <Dir value={[1, 2, 3]} />
-    <Dir value={{ a: 1, b: 2 }} />
+    <Dir value={{ a: 1, b: 2, c: /A/ }} />
     <Dir value={{ a: 1, b: [2, 3] }} />
     <Dir value={[1, 2, { a: 1, b: 2 }]} />
     <Dir value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]} />

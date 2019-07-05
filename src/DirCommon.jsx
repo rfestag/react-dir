@@ -51,18 +51,27 @@ Collapsible.propTypes = {
 };
 
 export const Collapsed = ({ name, value }) => {
-  const open = value instanceof Array ? "[" : "{";
-  const close = value instanceof Array ? "]" : "}";
-  return (
-    <span>
-      {name && "name: "}
-      {open}
+  if (value instanceof RegExp || value instanceof Date) {
+    return (
       <span>
-        <More />
+        {name && `${name} : `}
+        {value.toString()}
       </span>
-      {close}
-    </span>
-  );
+    );
+  } else {
+    const open = value instanceof Array ? "[" : "{";
+    const close = value instanceof Array ? "]" : "}";
+    return (
+      <span>
+        {name && `${name} : `}
+        {open}
+        <span>
+          <More />
+        </span>
+        {close}
+      </span>
+    );
+  }
 };
 Collapsed.propTypes = {
   name: PropTypes.string,

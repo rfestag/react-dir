@@ -9,20 +9,31 @@ import {
 } from "./DirCommon";
 
 export const ClosedObject = ({ name, value, onClick }) => {
-  return (
-    <span onClick={onClick}>
-      <span>
-        <CaretLeft />
-        {name
-          ? `${name}: ${value.constructor.name} {`
-          : `${value.constructor.name} {`}
+  if (value instanceof RegExp || value instanceof Date) {
+    return (
+      <span onClick={onClick}>
+        <span>
+          <CaretLeft />
+          {name ? `${name}: ${value}` : value.toString()}
+        </span>
       </span>
-      <span>
-        <InlineListProps value={value} />
-        <span>{"}"}</span>
+    );
+  } else {
+    return (
+      <span onClick={onClick}>
+        <span>
+          <CaretLeft />
+          {name
+            ? `${name}: ${value.constructor.name} {`
+            : `${value.constructor.name} {`}
+        </span>
+        <span>
+          <InlineListProps value={value} />
+          <span>{"}"}</span>
+        </span>
       </span>
-    </span>
-  );
+    );
+  }
 };
 ClosedObject.propTypes = {
   value: PropTypes.any,
