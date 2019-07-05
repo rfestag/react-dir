@@ -14,11 +14,9 @@ export const CollapsedObject = ({ name }) => {
   const { moreColor: color } = useContext(DirContext);
   return (
     <Collapsed name={name}>
-      <span>
-        {"{"}
-        <span style={{ color }}>&#x2026;</span>
-        {"}"}
-      </span>
+      {"{"}
+      <span style={{ color }}>&#x2026;</span>
+      {"}"}
     </Collapsed>
   );
 };
