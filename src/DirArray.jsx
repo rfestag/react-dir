@@ -1,37 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Dir } from "./Dir";
-import { More, ListProps, Collapsed, CaretLeft, CaretDown } from "./DirCommon";
+import {
+  ListProps,
+  InlineListProps,
+  Collapsed,
+  CaretLeft,
+  CaretDown
+} from "./DirCommon";
 
 export const ClosedArray = ({ name, value, onClick }) => {
-  const keys = Object.keys(value);
-  const first = keys.slice(0, 10);
-  const last = keys.slice(10);
-
   return (
     <span onClick={onClick}>
       <span>
         <CaretLeft />
-        {name ? `${name}: Array (${keys.length}) [` : "Array ["}
+        {name ? `${name}: Array (${value.length}) [` : "Array ["}
       </span>
-      <ul style={{ listStyleType: "none", paddingLeft: 8, display: "inline" }}>
-        {first.map((k, i) => {
-          return (
-            <li
-              key={k}
-              style={{ paddingLeft: 0, paddingRight: 8, display: "inline" }}
-            >
-              <Dir value={value[k]} withCaret={false} closed={true} />
-              {i !== first.length - 1 || last.length ? "," : null}
-            </li>
-          );
-        })}
-        {last.length ? (
-          <li style={{ paddingLeft: 0, paddingRight: 8, display: "inline" }}>
-            <More />
-          </li>
-        ) : null}
-      </ul>
+      <InlineListProps value={value} showKeys={false} />
       <span>{"]"}</span>
     </span>
   );
