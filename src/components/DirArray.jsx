@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { InlineListProps, CaretLeft } from "./DirCommon";
+import { InlineListProps } from "./InlineListProps";
+import { CaretLeft } from "./Caret";
 
 export const ClosedArray = ({ name, value, onClick }) => {
   return (

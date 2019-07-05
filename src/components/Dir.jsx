@@ -1,11 +1,8 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import {
-  DirContext,
-  DirDefaultStyle,
-  Collapsible,
-  Collapsed
-} from "./DirCommon";
+import { DirContext } from "../utils/common";
+import { Collapsible } from "./Collapsible";
+import { Collapsed } from "./Collapsed";
 import { OpenObject, ClosedObject } from "./DirObject";
 import { ClosedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
@@ -88,19 +85,3 @@ Dir.propTypes = {
   withCaret: PropTypes.bool,
   closed: PropTypes.bool
 };
-
-const DirRoot = ({ value }) => {
-  const { color, fontSize, fontFamily } = useContext(DirContext);
-  return (
-    <div style={{ fontFamily, fontSize, color }}>
-      <Dir value={value} />
-    </div>
-  );
-};
-DirRoot.propTypes = {
-  value: PropTypes.any
-};
-
-export { DirContext, DirDefaultStyle };
-
-export default DirRoot;

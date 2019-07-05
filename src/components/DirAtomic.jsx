@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CaretBlank } from "./DirCommon";
+import { CaretBlank } from "./Caret";
 
 export const DirAtomic = ({ name, color, withCaret, value }) => {
   return (

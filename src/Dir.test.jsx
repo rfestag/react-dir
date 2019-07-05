@@ -1,10 +1,11 @@
 import React from "react";
 import { mount } from "../enzyme";
-import { DirAtomic } from "./DirAtomic";
-import { ClosedArray } from "./DirArray";
-import { OpenObject, ClosedObject } from "./DirObject";
-import { Collapsed, More } from "./DirCommon";
-import Dir from "./Dir";
+import { DirAtomic } from "./components/DirAtomic";
+import { ClosedArray } from "./components/DirArray";
+import { OpenObject, ClosedObject } from "./components/DirObject";
+import { More } from "./components/More";
+import { Collapsed } from "./components/Collapsed";
+import Dir from "./index";
 
 const atomicValueIs = (value, result) => {
   const wrapper = mount(<Dir value={value} />);

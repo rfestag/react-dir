@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Collapsed,
-  ListProps,
-  InlineListProps,
-  CaretLeft,
-  CaretDown,
-  simpleObject
-} from "./DirCommon";
+import { Collapsed } from "./Collapsed";
+import { ListProps } from "./ListProps";
+import { InlineListProps } from "./InlineListProps";
+import { CaretLeft, CaretDown } from "./Caret";
+import { simpleObject } from "../utils/common";
 
 const objectPropTypes = {
   name: PropTypes.string,
