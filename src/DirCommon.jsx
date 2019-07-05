@@ -27,22 +27,17 @@ export const More = ({ onClick }) => {
 More.propTypes = {
   onClick: PropTypes.func
 };
-export const CaretLeft = () => {
+export const Caret = ({ children }) => {
   const { caretColor: color } = useContext(DirContext);
   return (
     <span style={{ display: "inline-block", width: 8, paddingRight: 8, color }}>
-      {"\u25B6"}
+      {children ? children : null}
     </span>
   );
 };
-export const CaretDown = () => {
-  const { caretColor: color } = useContext(DirContext);
-  return (
-    <span style={{ display: "inline-block", width: 8, paddingRight: 8, color }}>
-      {"\u25BC"}
-    </span>
-  );
+Caret.propTypes = {
+  children: PropTypes.any
 };
-export const CaretBlank = () => (
-  <span style={{ display: "inline-block", width: 8, paddingRight: 8 }} />
-);
+export const CaretLeft = () => <Caret>&#x25B6;</Caret>;
+export const CaretDown = () => <Caret>&#x25BC;</Caret>;
+export const CaretBlank = () => <Caret />;
