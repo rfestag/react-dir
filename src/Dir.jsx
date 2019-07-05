@@ -66,36 +66,22 @@ export const Dir = ({ name, value, withCaret, closed }) => {
         color={stringColor}
       />
     );
-  } else if (value instanceof Array) {
-    component = closed ? (
-      <Collapsed name={name} value={value} />
-    ) : (
-      <Collapsible
-        Open={OpenArray}
-        Closed={ClosedArray}
-        name={name}
-        value={value}
-      />
-    );
-  } else if (value instanceof RegExp) {
-    component = (
-      <Collapsible
-        Open={OpenRegex}
-        Closed={ClosedRegex}
-        name={name}
-        value={value}
-      />
-    );
   } else {
+    let Open, Closed;
+    if (value instanceof Array) {
+      Open = OpenArray;
+      Closed = ClosedArray;
+    } else if (value instanceof RegExp) {
+      Open = OpenRegex;
+      Closed = ClosedRegex;
+    } else {
+      Open = OpenObject;
+      Closed = ClosedObject;
+    }
     component = closed ? (
       <Collapsed name={name} value={value} />
     ) : (
-      <Collapsible
-        Open={OpenObject}
-        Closed={ClosedObject}
-        name={name}
-        value={value}
-      />
+      <Collapsible Open={Open} Closed={Closed} name={name} value={value} />
     );
   }
   return component;
