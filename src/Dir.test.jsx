@@ -12,43 +12,31 @@ import {
 import { More } from "./DirCommon";
 import Dir from "./Dir";
 
+const atomicValueIs = (value, result) => {
+  const wrapper = mount(<Dir value={value} />);
+  const atomic = wrapper.find(DirAtomic);
+  expect(atomic.length).toEqual(1);
+  expect(atomic.text()).toEqual(result);
+};
 describe("Dir tests", () => {
   describe("Atomic values", () => {
     it("renders null values", () => {
-      const wrapper = mount(<Dir value={null} />);
-      const atomic = wrapper.find(DirAtomic);
-      expect(atomic.length).toEqual(1);
-      expect(atomic.text()).toEqual("null");
+      atomicValueIs(null, "null");
     });
     it("renders undefined values", () => {
-      const wrapper = mount(<Dir value={undefined} />);
-      const atomic = wrapper.find(DirAtomic);
-      expect(atomic.length).toEqual(1);
-      expect(atomic.text()).toEqual("undefined");
+      atomicValueIs(undefined, "undefined");
     });
     it("renders NaN values", () => {
-      const wrapper = mount(<Dir value={NaN} />);
-      const atomic = wrapper.find(DirAtomic);
-      expect(atomic.length).toEqual(1);
-      expect(atomic.text()).toEqual("NaN");
+      atomicValueIs(NaN, "NaN");
     });
     it("renders numeric values", () => {
-      const wrapper = mount(<Dir value={123} />);
-      const atomic = wrapper.find(DirAtomic);
-      expect(atomic.length).toEqual(1);
-      expect(atomic.text()).toEqual("123");
+      atomicValueIs(123, "123");
     });
     it("renders boolean values", () => {
-      const wrapper = mount(<Dir value={true} />);
-      const atomic = wrapper.find(DirAtomic);
-      expect(atomic.length).toEqual(1);
-      expect(atomic.text()).toEqual("true");
+      atomicValueIs(true, "true");
     });
     it("renders string values", () => {
-      const wrapper = mount(<Dir value={"String"} />);
-      const atomic = wrapper.find(DirAtomic);
-      expect(atomic.length).toEqual(1);
-      expect(atomic.text()).toEqual('"String"');
+      atomicValueIs("String", '"String"');
     });
   });
   describe("Regex values", () => {
