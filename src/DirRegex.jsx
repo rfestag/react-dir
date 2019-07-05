@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { CaretLeft, CaretDown } from "./DirCommon";
+import { Collapsible, CaretLeft, CaretDown } from "./DirCommon";
 import { ListProps } from "./DirObject";
 
 export const ClosedRegex = ({ name, value, onClick }) => {
@@ -35,14 +35,14 @@ OpenRegex.propTypes = {
   name: PropTypes.string
 };
 
-export const DirRegex = ({ name, value }) => {
-  const [open, setOpen] = useState(false);
-  return open ? (
-    <OpenRegex onClick={() => setOpen(false)} name={name} value={value} />
-  ) : (
-    <ClosedRegex onClick={() => setOpen(true)} name={name} value={value} />
-  );
-};
+export const DirRegex = ({ name, value }) => (
+  <Collapsible
+    Open={OpenRegex}
+    Closed={ClosedRegex}
+    name={name}
+    value={value}
+  />
+);
 DirRegex.propTypes = {
   value: PropTypes.object,
   name: PropTypes.string

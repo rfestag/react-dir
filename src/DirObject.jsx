@@ -1,7 +1,14 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
-import { DirContext, Collapsed, More, CaretLeft, CaretDown } from "./DirCommon";
+import {
+  DirContext,
+  Collapsed,
+  Collapsible,
+  More,
+  CaretLeft,
+  CaretDown
+} from "./DirCommon";
 
 export const CollapsedObject = ({ name }) => {
   const { moreColor: color } = useContext(DirContext);
@@ -113,14 +120,14 @@ OpenObject.propTypes = {
   name: PropTypes.string
 };
 
-export const DirObject = ({ name, value }) => {
-  const [open, setOpen] = useState(false);
-  return open ? (
-    <OpenObject onClick={() => setOpen(false)} name={name} value={value} />
-  ) : (
-    <ClosedObject onClick={() => setOpen(true)} name={name} value={value} />
-  );
-};
+export const DirObject = ({ name, value }) => (
+  <Collapsible
+    Open={OpenObject}
+    Closed={ClosedObject}
+    name={name}
+    value={value}
+  />
+);
 DirObject.propTypes = {
   value: PropTypes.object,
   name: PropTypes.string

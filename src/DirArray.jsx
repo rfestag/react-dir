@@ -1,7 +1,14 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
-import { DirContext, More, Collapsed, CaretLeft, CaretDown } from "./DirCommon";
+import {
+  DirContext,
+  More,
+  Collapsed,
+  Collapsible,
+  CaretLeft,
+  CaretDown
+} from "./DirCommon";
 
 export const CollapsedArray = ({ name }) => {
   const { moreColor: color } = useContext(DirContext);
@@ -82,14 +89,14 @@ OpenArray.propTypes = {
   name: PropTypes.string
 };
 
-export const DirArray = ({ name, value }) => {
-  const [open, setOpen] = useState(false);
-  return open ? (
-    <OpenArray onClick={() => setOpen(false)} name={name} value={value} />
-  ) : (
-    <ClosedArray onClick={() => setOpen(true)} name={name} value={value} />
-  );
-};
+export const DirArray = ({ name, value }) => (
+  <Collapsible
+    Open={OpenArray}
+    Closed={ClosedArray}
+    name={name}
+    value={value}
+  />
+);
 DirArray.propTypes = {
   value: PropTypes.array,
   name: PropTypes.string

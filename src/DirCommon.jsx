@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 
 export const DirDefaultStyle = {
@@ -41,6 +41,21 @@ Caret.propTypes = {
 export const CaretLeft = () => <Caret>&#x25B6;</Caret>;
 export const CaretDown = () => <Caret>&#x25BC;</Caret>;
 export const CaretBlank = () => <Caret />;
+export const Collapsible = ({ name, value, Open, Closed }) => {
+  const [open, setOpen] = useState(false);
+  return open ? (
+    <Open onClick={() => setOpen(false)} name={name} value={value} />
+  ) : (
+    <Closed onClick={() => setOpen(true)} name={name} value={value} />
+  );
+};
+Collapsible.propTypes = {
+  Open: PropTypes.any,
+  Closed: PropTypes.any,
+  name: PropTypes.string,
+  value: PropTypes.any
+};
+
 export const Collapsed = ({ name, children }) => {
   return (
     <span>
