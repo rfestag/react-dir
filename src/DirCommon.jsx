@@ -41,3 +41,15 @@ Caret.propTypes = {
 export const CaretLeft = () => <Caret>&#x25B6;</Caret>;
 export const CaretDown = () => <Caret>&#x25BC;</Caret>;
 export const CaretBlank = () => <Caret />;
+export const Collapsed = ({ name, children }) => {
+  return (
+    <span>
+      {name ? `${name}:` : ""}
+      {children}
+    </span>
+  );
+};
+Collapsed.propTypes = {
+  name: PropTypes.string,
+  children: PropTypes.any
+};

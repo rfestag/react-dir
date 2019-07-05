@@ -1,19 +1,18 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
-import { DirContext, More, CaretLeft, CaretDown } from "./DirCommon";
+import { DirContext, Collapsed, More, CaretLeft, CaretDown } from "./DirCommon";
 
 export const CollapsedObject = ({ name }) => {
   const { moreColor: color } = useContext(DirContext);
   return (
-    <span>
-      {name ? `${name}:` : ""}
+    <Collapsed name={name}>
       <span>
         {"{"}
         <span style={{ color }}>&#x2026;</span>
         {"}"}
       </span>
-    </span>
+    </Collapsed>
   );
 };
 CollapsedObject.propTypes = {
