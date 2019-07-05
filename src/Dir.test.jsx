@@ -69,7 +69,7 @@ describe("Dir tests", () => {
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(10);
-      const more = wrapper.find(More);
+      const more = wrapper.find(More).last();
       more.simulate("click");
       open = wrapper.find(OpenArray);
       atomic = open.find(DirAtomic);
@@ -130,7 +130,7 @@ describe("Dir tests", () => {
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(10);
-      const more = wrapper.find(More);
+      const more = wrapper.find(More).last();
       more.simulate("click");
       open = wrapper.find(OpenObject);
       atomic = open.find(DirAtomic);

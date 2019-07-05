@@ -36,7 +36,11 @@ export const ClosedObject = ({ name, value, onClick }) => {
               </li>
             );
           })}
-          {last.length ? <More /> : null}
+          {last.length ? (
+            <li style={{ paddingLeft: 0, paddingRight: 8, display: "inline" }}>
+              <More />
+            </li>
+          ) : null}
         </ul>
 
         <span>{"}"}</span>

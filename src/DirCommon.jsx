@@ -17,16 +17,9 @@ export const DirDefaultStyle = {
   fontSize: 12
 };
 export const DirContext = React.createContext(DirDefaultStyle);
-export const More = ({ onClick }) => {
+export const More = () => {
   const { moreColor: color } = useContext(DirContext);
-  return (
-    <li onClick={onClick} style={{ display: "inline", color }}>
-      &#x2026;
-    </li>
-  );
-};
-More.propTypes = {
-  onClick: PropTypes.func
+  return <span style={{ display: "inline", color }}>&#x2026;</span>;
 };
 export const Caret = ({ children }) => {
   const { caretColor: color } = useContext(DirContext);
@@ -60,8 +53,16 @@ Collapsible.propTypes = {
 export const Collapsed = ({ name, value }) => {
   const open = value instanceof Array ? "[" : "{";
   const close = value instanceof Array ? "]" : "}";
-  const filler = `${open}\u2026${close}`;
-  return <span>{name ? `${name}: ${filler}` : filler}</span>;
+  return (
+    <span>
+      {name && "name: "}
+      {open}
+      <span>
+        <More />
+      </span>
+      {close}
+    </span>
+  );
 };
 Collapsed.propTypes = {
   name: PropTypes.string,
@@ -89,7 +90,12 @@ export const ListProps = ({ value }) => {
       <li>
         <Dir name="prototype" value={Object.getPrototypeOf(value)} />
       </li>
-      {last.length ? <More onClick={() => setCount(count + 10)} /> : null}
+      {last.length ? (
+        <li onClick={() => setCount(count + 10)}>
+          <CaretBlank />
+          <More />
+        </li>
+      ) : null}
     </ul>
   );
 };
