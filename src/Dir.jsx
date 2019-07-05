@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import {
-  DirContext as dirContext,
-  DirDefaultStyle as defaultStyle
-} from "./DirCommon";
-import { DirObject, CollapsedObject } from "./DirObject";
+import { DirContext, DirDefaultStyle, Collapsed } from "./DirCommon";
+import { DirObject } from "./DirObject";
 import { DirRegex } from "./DirRegex";
-import { DirArray, CollapsedArray } from "./DirArray";
+import { DirArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
 
 export const Dir = ({ name, value, withCaret, closed }) => {
@@ -17,7 +14,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
     nanColor,
     numericColor,
     stringColor
-  } = useContext(dirContext);
+  } = useContext(DirContext);
   let component;
   if (value === undefined) {
     component = (
@@ -66,7 +63,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
     );
   } else if (value instanceof Array) {
     component = closed ? (
-      <CollapsedArray name={name} />
+      <Collapsed name={name} value={value} />
     ) : (
       <DirArray name={name} value={value} />
     );
@@ -74,7 +71,7 @@ export const Dir = ({ name, value, withCaret, closed }) => {
     component = <DirRegex name={name} value={value} />;
   } else {
     component = closed ? (
-      <CollapsedObject name={name} />
+      <Collapsed name={name} value={value} />
     ) : (
       <DirObject name={name} value={value} />
     );
@@ -89,7 +86,7 @@ Dir.propTypes = {
 };
 
 const DirRoot = ({ value }) => {
-  const { color, fontSize, fontFamily } = useContext(dirContext);
+  const { color, fontSize, fontFamily } = useContext(DirContext);
   return (
     <div style={{ fontFamily, fontSize, color }}>
       <Dir value={value} />
@@ -100,7 +97,6 @@ DirRoot.propTypes = {
   value: PropTypes.any
 };
 
-export const DirContext = dirContext;
-export const DirDefaultStyle = defaultStyle;
+export { DirContext, DirDefaultStyle };
 
 export default DirRoot;

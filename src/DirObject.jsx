@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Dir } from "./Dir";
 import {
-  DirContext,
   Collapsed,
   Collapsible,
   More,
@@ -11,19 +10,6 @@ import {
   CaretDown
 } from "./DirCommon";
 
-export const CollapsedObject = ({ name }) => {
-  const { moreColor: color } = useContext(DirContext);
-  return (
-    <Collapsed name={name}>
-      {"{"}
-      <span style={{ color }}>&#x2026;</span>
-      {"}"}
-    </Collapsed>
-  );
-};
-CollapsedObject.propTypes = {
-  name: PropTypes.string
-};
 export const ClosedObject = ({ name, value, onClick }) => {
   const keys = Object.keys(value);
   const first = keys.slice(0, 10);
@@ -77,7 +63,7 @@ export const OpenObject = ({ name, value, onClick }) => {
         <CaretDown />
         <span>
           {name && <span>{name}: </span>}
-          <CollapsedObject />
+          <Collapsed value={value} />
         </span>
       </span>
       <ListProps value={value} />

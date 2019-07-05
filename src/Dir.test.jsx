@@ -2,14 +2,9 @@ import React from "react";
 import { mount } from "../enzyme";
 import { DirAtomic } from "./DirAtomic";
 import { DirRegex, ClosedRegex } from "./DirRegex";
-import { DirArray, OpenArray, ClosedArray, CollapsedArray } from "./DirArray";
-import {
-  DirObject,
-  OpenObject,
-  ClosedObject,
-  CollapsedObject
-} from "./DirObject";
-import { More } from "./DirCommon";
+import { DirArray, OpenArray, ClosedArray } from "./DirArray";
+import { DirObject, OpenObject, ClosedObject } from "./DirObject";
+import { Collapsed, More } from "./DirCommon";
 import Dir from "./Dir";
 
 const atomicValueIs = (value, result) => {
@@ -60,7 +55,7 @@ describe("Dir tests", () => {
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(4);
-      open.find(CollapsedArray).simulate("click");
+      open.find(Collapsed).simulate("click");
       closed = wrapper.find(ClosedArray);
       expect(closed.length).toEqual(1);
     });
@@ -107,7 +102,7 @@ describe("Dir tests", () => {
       expect(open.length).toEqual(1);
       let atomic = open.find(DirAtomic);
       expect(atomic.length).toEqual(2);
-      open.find(CollapsedObject).simulate("click");
+      open.find(Collapsed).simulate("click");
       closed = wrapper.find(ClosedObject);
       expect(closed.length).toEqual(1);
     });

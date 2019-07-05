@@ -57,17 +57,15 @@ Collapsible.propTypes = {
   value: PropTypes.any
 };
 
-export const Collapsed = ({ name, children }) => {
-  return (
-    <span>
-      {name ? `${name}:` : ""}
-      {children}
-    </span>
-  );
+export const Collapsed = ({ name, value }) => {
+  const open = value instanceof Array ? "[" : "{";
+  const close = value instanceof Array ? "]" : "}";
+  const filler = `${open}\u2026${close}`;
+  return <span>{name ? `${name}: ${filler}` : filler}</span>;
 };
 Collapsed.propTypes = {
   name: PropTypes.string,
-  children: PropTypes.any
+  value: PropTypes.any
 };
 export const ListProps = ({ value }) => {
   const [count, setCount] = useState(10);
