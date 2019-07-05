@@ -147,3 +147,6 @@ InlineListProps.propTypes = {
   showKeys: PropTypes.bool,
   size: PropTypes.number
 };
+export const simpleObject = value => {
+  return value instanceof RegExp || value instanceof Date;
+};
