@@ -28,7 +28,7 @@
       "/dist"
     ],
     "coveragePathIgnorePatterns": [
-      "/src/index.js"
+      "/src/example.js"
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
