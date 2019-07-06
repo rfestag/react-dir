@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Dir from "./index.js";
+import { Dir } from "./index.js";
 
 ReactDOM.render(
   <div>

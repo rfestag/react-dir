@@ -1,20 +1,18 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Dir } from "./components/Dir";
+import { Dir as DirChild } from "./components/Dir";
 import { DirContext, DirDefaultStyle } from "./utils/common";
 
-const DirRoot = ({ value }) => {
+const Dir = ({ value }) => {
   const { color, fontSize, fontFamily } = useContext(DirContext);
   return (
     <div style={{ fontFamily, fontSize, color }}>
-      <Dir value={value} />
+      <DirChild value={value} />
     </div>
   );
 };
-DirRoot.propTypes = {
+Dir.propTypes = {
   value: PropTypes.any
 };
 
-export { DirContext, DirDefaultStyle };
-
-export default DirRoot;
+export { Dir, DirContext, DirDefaultStyle };

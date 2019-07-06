@@ -5,7 +5,7 @@ import { ClosedArray } from "./components/DirArray";
 import { OpenObject, ClosedObject } from "./components/DirObject";
 import { More } from "./components/More";
 import { Collapsed } from "./components/Collapsed";
-import Dir from "./index";
+import { Dir } from "./index";
 
 const atomicValueIs = (value, result) => {
   const wrapper = mount(<Dir value={value} />);
