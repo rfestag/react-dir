@@ -2,7 +2,7 @@
   "name": "react-dir",
   "version": "0.0.1",
   "description": "A react component that can do a console.dir()-like listing of any object passed to it.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Ryan Festag (rfestag@gmail.com)",
   "license": "ISC",
   "scripts": {
