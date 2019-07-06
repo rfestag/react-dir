@@ -3,13 +3,14 @@ var path = require("path");
 module.exports = {
   entry: path.resolve(__dirname, "src/index.js"),
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname),
     filename: "index.js",
     library: "",
     libraryTarget: "commonjs"
   },
   externals: {
-    react: "commonjs react"
+    react: "react",
+    "react-dom": "reactDOM"
   },
   module: {
     rules: [
