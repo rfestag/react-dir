@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack --mode=production --display-error-details",
-    "start": "parcel src/index.html",
+    "start": "parcel examples/index.html",
     "doc": "jsdoc -c jsdoc.json",
     "precommit": "lint-staged",
     "release": "standard-version",
@@ -29,7 +29,7 @@
       "/dist"
     ],
     "coveragePathIgnorePatterns": [
-      "/src/example.js"
+      "/examples/*"
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
