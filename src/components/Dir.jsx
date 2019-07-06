@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { DirContext } from "../utils/common";
 import { Collapsible } from "./Collapsible";
 import { Collapsed } from "./Collapsed";
-import { OpenObject, ClosedObject } from "./DirObject";
+import { ClosedObject } from "./DirObject";
 import { ClosedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
 
@@ -63,18 +63,16 @@ export const Dir = ({ name, value, withCaret, closed }) => {
       />
     );
   } else {
-    let Open, Closed;
+    let Closed;
     if (value instanceof Array) {
-      Open = OpenObject;
       Closed = ClosedArray;
     } else {
-      Open = OpenObject;
       Closed = ClosedObject;
     }
     component = closed ? (
       <Collapsed name={name} value={value} />
     ) : (
-      <Collapsible Open={Open} Closed={Closed} name={name} value={value} />
+      <Collapsible Closed={Closed} name={name} value={value} />
     );
   }
   return component;
