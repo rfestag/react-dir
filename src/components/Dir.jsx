@@ -7,7 +7,7 @@ import { ClosedObject } from "./DirObject";
 import { ClosedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
 
-export const Dir = ({ name, value, withCaret, closed }) => {
+export const Dir = ({ name, value, withCaret, closed, collapsed = true }) => {
   const {
     undefinedColor,
     nullColor,
@@ -72,7 +72,12 @@ export const Dir = ({ name, value, withCaret, closed }) => {
     component = closed ? (
       <Collapsed name={name} value={value} />
     ) : (
-      <Collapsible Closed={Closed} name={name} value={value} />
+      <Collapsible
+        Closed={Closed}
+        name={name}
+        value={value}
+        collapsed={collapsed}
+      />
     );
   }
   return component;
@@ -81,5 +86,6 @@ Dir.propTypes = {
   value: PropTypes.any,
   name: PropTypes.string,
   withCaret: PropTypes.bool,
-  closed: PropTypes.bool
+  closed: PropTypes.bool,
+  collapsed: PropTypes.bool
 };

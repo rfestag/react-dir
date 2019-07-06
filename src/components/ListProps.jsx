@@ -20,6 +20,9 @@ export const ListProps = ({ value }) => {
             </li>
           );
         } catch (e) {
+          //Some properties are not intended to be accessed (namely things like
+          //callee, caller, and arguments on some functions in prototypes).
+          //Accssing them throws an exception. In those cases, we just don't render them
           return null;
         }
       })}

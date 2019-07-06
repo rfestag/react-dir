@@ -7,8 +7,8 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack --mode=production --display-error-details",
-    "start": "parcel examples/index.html",
-    "doc": "jsdoc -c jsdoc.json",
+    "start": "docz dev",
+    "doc": "docz build",
     "precommit": "lint-staged",
     "release": "standard-version",
     "test": "jest --coverage"
@@ -50,6 +50,8 @@
     "coveralls": "^3.0.4",
     "cross-env": "^5.2.0",
     "docdash": "^1.1.1",
+    "docz": "^1.2.0",
+    "docz-theme-default": "^1.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
