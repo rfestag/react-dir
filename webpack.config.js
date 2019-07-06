@@ -3,7 +3,8 @@ var path = require("path");
 module.exports = {
   entry: path.resolve(__dirname, "src/index.js"),
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    //path: path.resolve(__dirname, "./dist"),
+    path: __dirname,
     filename: "index.js",
     library: "",
     libraryTarget: "commonjs"
@@ -15,7 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components|tutorials)/,
+        exclude: /(node_modules|bower_components|tutorials|examples)/,
         loader: "babel-loader",
         resolve: { extensions: [".js", ".jsx"] },
         options: {
