@@ -6,7 +6,7 @@
   "author": "Ryan Festag (rfestag@gmail.com)",
   "license": "ISC",
   "scripts": {
-    "build": "rm -rf dist/* && parcel build src/Dir.jsx --out-file index.js",
+    "build": "webpack --mode=production --display-error-details",
     "start": "parcel src/index.html",
     "doc": "jsdoc -c jsdoc.json",
     "precommit": "lint-staged",
@@ -17,6 +17,7 @@
     "*.{js,jsx}": [
       "eslint --fix",
       "prettier --write",
+      "npm run doc",
       "npm run build",
       "jest --bail --coverage --findRelatedTests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
       "git add"
@@ -50,6 +51,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-rewire": "^1.2.0",
     "coveralls": "^3.0.4",
     "cross-env": "^5.2.0",
@@ -72,7 +74,9 @@
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "standard-version": "^6.0.1"
+    "standard-version": "^6.0.1",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
   },
   "peerDependencies": {
     "react": "^16.8.6",
