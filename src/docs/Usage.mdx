@@ -1,0 +1,107 @@
+---
+name: Usage
+---
+
+import { Playground, Props } from 'docz';
+import { Dir, DirContext, DirDefaultStyle } from '../index';
+
+# Usage
+
+react-dir is designed to render arbitrary JS objects and primitive types, similar to `console.dir()` in your browser's console.
+
+## Dir
+
+<Props of={Dir} />
+
+The `Dir` component is the primary component you will use. 
+
+<Playground>
+  <Dir value={{a: 1, b: 2}} />
+</Playground>
+
+### Primitive types
+
+react-dir accepts keyword constants (such as `null`, `NaN`, and `undefined`) as well as simple values (like strings and numbers), displaying them with color highlighting similar to Firefox's `console.dir()`. 
+
+#### Null
+<Dir value={null} />
+
+#### NaN
+<Dir value={NaN} />
+
+#### Undefined
+<Dir value={undefined} />
+
+#### Boolean values
+<Dir value={true} />
+<Dir value={false} />
+
+#### Numerics
+<Dir value={3.1459} />
+<Dir value={Math.pow(2, 32)} />
+
+#### Strings
+<Dir value={"String"} />
+
+### Complex types
+
+#### Object
+
+Properties of objects can be any type
+<Dir value={{a: 1, b: 2, c: /[A-Z]{3}/, d: "String"}} />
+
+And can even nest arrays or other objects
+<Dir value={{array: [1,2,3]}} />
+
+react-dir will only render up to 10 propertye by default. It will indicate that
+additional properties are available with ellipses. Expand the example below, then click the ellipses 
+at the end to see up to 10 more properties.
+<Dir value={{
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5,
+    f: 6,
+    g: 7,
+    h: 8,
+    i: 9,
+    j: 10,
+    k: 11
+  }}
+/>
+
+#### Array
+
+In the simplest case, arrays, only have simple values
+<Dir value={[1,2,3]} />
+
+Just as above, only 10 elements are shown by default
+<Dir value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]} />
+
+However, react-dir also supports testing arrays and objects
+<Dir value={[1,2,[{obj: {a: 'String'}}]]} />
+
+#### Regular Expressions
+
+When we encounter a regular expression, we render it slightly differently than other objects
+<Dir value={/[A-Z]{3}/} />
+
+#### Dates
+
+Dates are also treated as a special case
+<Dir value={new Date()} />
+
+## Customization
+
+In case you don't like the defaults, react-dir allows you to specify new coloring for each type of element through the `DirContext`
+
+<Playground>
+  <DirContext.Provider value={{...DirDefaultStyle, color: 'purple'}}>
+    <Dir value={{a: [1,2,3], b: /[A-Z]{3}/, c: "String", d: null}} />
+  </DirContext.Provider>
+</Playground>
+
+You can even see all of the available properties here
+<Dir value={DirDefaultStyle} collapsed={false}/>
+~                                                  

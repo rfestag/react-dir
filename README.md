@@ -11,11 +11,13 @@ react-dir is a react component for rendering arbitrary JS data (strings, numbers
 
 It hasn't been published yet, but once it is you will install like this:
 
-```
+```bash
 npm install react-dir
 ```
 
 ## Usage
+
+`react-dir` provides a `Dir` component that receives some value to render. More examples can be found in the documentation page.
 
 ```jsx
 import React from "react";
@@ -23,27 +25,17 @@ import ReactDOM from "react-dom";
 import Dir from "./Dir";
 
 ReactDOM.render(
-  <div>
-    <Dir value={null} />
-    <Dir value={undefined} />
-    <Dir value={NaN} />
-    <Dir value={Infinity} />
-    <Dir value={true} />
-    <Dir value={false} />
-    <Dir value={123.0} />
-    <Dir value={"A String"} />
-    <Dir value={/[A-Z]{3}/} />
-    <Dir value={new Date()} />
-    <Dir value={[1, 2, 3]} />
-    <Dir value={{ a: 1, b: 2 }} />
-    <Dir value={{ a: 1, b: [2, 3] }} />
-    <Dir value={[1, 2, { a: 1, b: 2 }]} />
-    <Dir value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]} />
-  </div>,
+  <Dir value={{a: 1, b: "String", c: [1,2,3]}}>,
   document.getElementById("root")
 );
 ```
 
-## License
+## TODO
 
-react-dir is [ISC](LICENSE) licensed
+- [x] Support constant values (null, NaN, undefined)
+- [x] Support primitive types (Strings, numbers, booleans)
+- [x] Support nested objects and arrays
+- [x] Support custom coloring
+- [ ] Support React components (pass through)
+- [ ] Support Promises
+- [ ] Support Observables (RxJS)

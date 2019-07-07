@@ -17,9 +17,9 @@
     "*.{js,jsx}": [
       "eslint --fix",
       "prettier --write",
+      "jest --bail --coverage --findRelatedTests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
       "npm run doc",
       "npm run build",
-      "jest --bail --coverage --findRelatedTests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
       "git add"
     ]
   },
