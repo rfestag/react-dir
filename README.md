@@ -17,7 +17,7 @@ npm install react-dir
 
 ## Usage
 
-`react-dir` provides a `Dir` component that receives some value to render. More examples can be found in the documentation page.
+`react-dir` provides a `Dir` component that receives some value to render. More examples can be found in the [documentation page](https://rfestag.github.io/react-dir/).
 
 ```jsx
 import React from "react";
