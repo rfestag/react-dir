@@ -1,6 +1,6 @@
 export default {
   dest: "/docs",
-  base: "/react-dir",
+  base: "/react-dir/",
   themeConfig: {
     mode: "dark",
     showPlaygroundEditor: true
