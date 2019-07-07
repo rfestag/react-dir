@@ -1,11 +1,11 @@
 {
   "vendors.js": "/react-dir/static/js/vendors.26ebd359.js",
-  "vendors.js.map": "/react-dir/static/js/vendors.aed1dea0f76d791cc18b.js.map",
-  "app.js": "/react-dir/static/js/app.aed1dea0f76d791cc18b.js",
-  "app.js.map": "/react-dir/static/js/app.aed1dea0f76d791cc18b.js.map",
-  "readme.js": "/react-dir/static/js/readme.0b00fcda.js",
-  "readme.js.map": "/react-dir/static/js/readme.aed1dea0f76d791cc18b.js.map",
-  "src-docs-usage.js": "/react-dir/static/js/src-docs-usage.2959da15.js",
-  "src-docs-usage.js.map": "/react-dir/static/js/src-docs-usage.aed1dea0f76d791cc18b.js.map",
+  "vendors.js.map": "/react-dir/static/js/vendors.35f42bb7b021c40f62d0.js.map",
+  "app.js": "/react-dir/static/js/app.35f42bb7b021c40f62d0.js",
+  "app.js.map": "/react-dir/static/js/app.35f42bb7b021c40f62d0.js.map",
+  "readme.js": "/react-dir/static/js/readme.01353403.js",
+  "readme.js.map": "/react-dir/static/js/readme.35f42bb7b021c40f62d0.js.map",
+  "src-docs-usage.js": "/react-dir/static/js/src-docs-usage.c61f8990.js",
+  "src-docs-usage.js.map": "/react-dir/static/js/src-docs-usage.35f42bb7b021c40f62d0.js.map",
   "index.html": "/react-dir/index.html"
 }

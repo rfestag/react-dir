@@ -9,17 +9,15 @@
     "build": "webpack --mode=production --display-error-details",
     "start": "docz dev",
     "doc": "docz build",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && npm-run-all --parallel doc build",
     "release": "standard-version",
     "test": "jest --coverage"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "src/*.{js,jsx}": [
       "eslint --fix",
       "prettier --write",
       "jest --bail --coverage --findRelatedTests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-      "npm run doc",
-      "npm run build",
       "git add"
     ]
   },
@@ -66,6 +64,7 @@
     "jsdoc": "^3.6.2",
     "jsdoc-mermaid": "^1.0.0",
     "lint-staged": "^8.2.1",
+    "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
