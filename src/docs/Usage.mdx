@@ -92,13 +92,19 @@ When we encounter a regular expression, we render it slightly differently than o
 Dates are also treated as a special case
 <Dir value={new Date()} />
 
+#### React Element
+
+You can even pass in a Reat element. It will simply pass through
+
+<Dir value={<span style={{color: 'red'}}>This is a span element with color: red</span>} />
+
 ## Customization
 
 In case you don't like the defaults, react-dir allows you to specify new coloring for each type of element through the `DirContext`
 
 <Playground>
   <DirContext.Provider value={{...DirDefaultStyle, color: 'purple'}}>
-    <Dir value={{a: [1,2,3], b: /[A-Z]{3}/, c: "String", d: null}} />
+    <Dir value={{a: [1,2,3], b: /[A-Z]{3}/, c: "String", d: null, element: <span style={{color: 'red'}}>Test Element</span>}} />
   </DirContext.Provider>
 </Playground>
 
