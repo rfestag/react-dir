@@ -36,6 +36,6 @@ ReactDOM.render(
 - [x] Support primitive types (Strings, numbers, booleans)
 - [x] Support nested objects and arrays
 - [x] Support custom coloring
-- [ ] Support React components (pass through)
+- [x] Support React components (pass through)
 - [ ] Support Promises
 - [ ] Support Observables (RxJS)

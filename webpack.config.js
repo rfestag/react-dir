@@ -16,7 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components|tutorials|examples)/,
+        exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
         resolve: { extensions: [".js", ".jsx"] },
         options: {

@@ -41,6 +41,14 @@ describe("Dir tests", () => {
       expect(closed.length).toEqual(1);
     });
   });
+  describe("React element values", () => {
+    it("renders element values", () => {
+      const wrapper = mount(<Dir value={<span>Test</span>} />);
+      const element = wrapper.find("span");
+      expect(element.length).toEqual(1);
+      expect(element.text()).toEqual("Test");
+    });
+  });
   describe("Array values", () => {
     it("renders closed by default", () => {
       const wrapper = mount(<Dir value={[1, 2, 3]} />);

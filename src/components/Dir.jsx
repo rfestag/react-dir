@@ -17,7 +17,9 @@ export const Dir = ({ name, value, withCaret, closed, collapsed = true }) => {
     stringColor
   } = useContext(DirContext);
   let component;
-  if (value === undefined) {
+  if (React.isValidElement(value)) {
+    component = value
+  } else if (value === undefined) {
     component = (
       <DirAtomic
         name={name}

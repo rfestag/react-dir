@@ -45,7 +45,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-rewire": "^1.2.0",
-    "coveralls": "^3.0.4",
     "cross-env": "^5.2.0",
     "docdash": "^1.1.1",
     "docz": "^1.2.0",
