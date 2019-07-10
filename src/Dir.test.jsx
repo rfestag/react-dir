@@ -44,8 +44,7 @@ describe("Dir tests", () => {
   describe("React element values", () => {
     it("renders element values", () => {
       const wrapper = mount(<Dir value={<span>Test</span>} />);
-      const element = wrapper.find("span");
-      expect(element.length).toEqual(1);
+      const element = wrapper.find("span").last();
       expect(element.text()).toEqual("Test");
     });
   });

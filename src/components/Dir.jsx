@@ -6,6 +6,7 @@ import { Collapsed } from "./Collapsed";
 import { ClosedObject } from "./DirObject";
 import { ClosedArray } from "./DirArray";
 import { DirAtomic } from "./DirAtomic";
+import { DirComponent } from "./DirComponent";
 
 export const Dir = ({ name, value, withCaret, closed, collapsed = true }) => {
   const {
@@ -18,7 +19,13 @@ export const Dir = ({ name, value, withCaret, closed, collapsed = true }) => {
   } = useContext(DirContext);
   let component;
   if (React.isValidElement(value)) {
-    component = value
+    component = (
+      <DirComponent
+        name={name}
+        withCaret={withCaret}
+        value={value}
+      />
+    )
   } else if (value === undefined) {
     component = (
       <DirAtomic
