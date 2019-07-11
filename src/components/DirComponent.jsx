@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { CaretBlank } from "./Caret";
+import { ErrorBoundary } from "./ErrorBoundary"
 
 export const DirComponent = ({ name, withCaret, value }) => {
   return (
-    <span>
-      {withCaret && <CaretBlank />}
-      {name && <span style={{ paddingRight: 4 }}>{name}:</span>}
-      {value}
-    </span>
+    <ErrorBoundary>
+      <span>
+        {withCaret && <CaretBlank />}
+        {name && <span style={{ paddingRight: 4 }}>{name}:</span>}
+        {value}
+      </span>
+    </ErrorBoundary>
   );
 };
 DirComponent.propTypes = {

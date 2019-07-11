@@ -47,6 +47,15 @@ describe("Dir tests", () => {
       const element = wrapper.find("span").last();
       expect(element.text()).toEqual("Test");
     });
+    it("renders error if something blows up", () => {
+      const wrapper = mount(
+        <Dir value={<span style={"not a valid style"}>Test</span>} />
+      );
+      const element = wrapper.find("pre");
+      expect(element.text()).toContain(
+        "The `style` prop expects a mapping from style properties to value"
+      );
+    });
   });
   describe("Array values", () => {
     it("renders closed by default", () => {
