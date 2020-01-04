@@ -6,6 +6,8 @@ import { CaretBlank } from "./Caret";
 
 export const ListProps = ({ value }) => {
   const [count, setCount] = useState(10);
+  //const descriptors = Object.getOwnPropertyDescriptors(value);
+  //console.log(descriptors)
   const keys = Object.getOwnPropertyNames(value);
   const first = keys.slice(0, count);
   const last = keys.slice(count);
